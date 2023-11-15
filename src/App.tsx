@@ -1,35 +1,54 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import CourseGoal from "./components/CourseGoal.tsx";
+import Header from "./components/Header.tsx";
+import goalsImg from "./assets/goals.jpeg";
+import "./App.css";
+import { useState } from "react";
+
+type CourseGoal = {
+  title: string;
+  description: string;
+  id: number;
+};
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [goals, setGoals] = useState<CourseGoal[]>([]);
 
+  function addGoalHandler() {
+    setGoals((prevGoals) => {
+      const newGoal: CourseGoal = {
+        id: Math.random(),
+        title: "Your Learnings",
+        description: "Add more about your goals",
+      };
+      return [...prevGoals, newGoal];
+    });
+  }
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
+    <main>
+      <Header image={{ src: goalsImg, alt: "A list of goals" }}>
+        <h1> Your goals list</h1>
+      </Header>
+      <button onClick={addGoalHandler}>Add Goal</button>
+      {goals.map((goal) => (
+        <li>
+          <CourseGoal title="Learn TS">
+            <p>
+              Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+              Perferendis repudiandae.
+            </p>
+          </CourseGoal>
+        </li>
+      ))}
+      <CourseGoal title="Learn React + TS">
         <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat sequi
+          alias ipsum obcaecati qui exercitationem nobis rerum veritatis nostrum
+          tempore velit sit vel optio, excepturi dolorem? Quis eaque ut
+          expedita!
         </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+      </CourseGoal>
+    </main>
+  );
 }
 
-export default App
+export default App;
