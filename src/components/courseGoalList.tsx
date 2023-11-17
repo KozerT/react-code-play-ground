@@ -1,4 +1,4 @@
-import CourseGoal from "./CourseGoal";
+import CourseGoal from "./CourseGoal.tsx";
 import { type CourseGoal as CGol } from "../App.tsx";
 
 type CourseGoaListProps = {
