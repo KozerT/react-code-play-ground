@@ -15,7 +15,6 @@ const NewGoal = ({ onAddGoal }: NewGoalProps) => {
     const enteredSummary = summary.current!.value;
 
     event.currentTarget.reset();
-
     onAddGoal(enteredGoal, enteredSummary);
   }
 

@@ -29,7 +29,7 @@ function App() {
   }
   return (
     <main>
-      <Header image={{ src: goalsImg, alt: "A list of goals" }}>
+      <Header>
         <h1> Your goals list</h1>
       </Header>
       <NewGoal onAddGoal={addGoalHandler} />
